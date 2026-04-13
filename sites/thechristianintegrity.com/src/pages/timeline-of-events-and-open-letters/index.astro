@@ -1,0 +1,17 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import TimelineList from "@shared/components/TimelineList.astro";
+import { getCollection } from "astro:content";
+import { filterTimelineEvents } from "@shared/utils/timeline";
+import type { Locale } from "@shared/i18n/translations";
+
+const locale = Astro.locals.locale as Locale;
+const siteDomain = Astro.locals.siteDomain;
+const timelineShowAll = Astro.locals.timelineShowAll;
+
+const allEvents = await getCollection("timeline");
+const events = filterTimelineEvents(allEvents, siteDomain, timelineShowAll);
+---
+<Base locale={locale}>
+  <TimelineList events={events} locale={locale} />
+</Base>

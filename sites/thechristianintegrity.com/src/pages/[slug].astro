@@ -1,0 +1,148 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import AiAnalysisContent from "@shared/components/AiAnalysisContent.astro";
+import { t } from "@shared/i18n/utils";
+import type { Locale } from "@shared/i18n/translations";
+import { navSlugs, navKeys, footerPageSlugs, footerPageKeys, footerPageTitles } from "@shared/i18n/translations";
+import fs from "node:fs";
+import path from "node:path";
+import { marked } from "marked";
+
+export function getStaticPaths() {
+  const paths: { params: { slug: string }; props: { sectionKey: string; isFooterPage: boolean } }[] = [];
+
+  // Nav pages
+  for (const locale of Object.keys(navSlugs) as Locale[]) {
+    for (const key of navKeys) {
+      if (key === "nav.timeline") continue;
+      paths.push({
+        params: { slug: navSlugs[locale][key] },
+        props: { sectionKey: key, isFooterPage: false },
+      });
+    }
+  }
+
+  // Footer-only pages
+  for (const locale of Object.keys(footerPageSlugs) as Locale[]) {
+    for (const key of footerPageKeys) {
+      const slug = footerPageSlugs[locale][key];
+      if (!slug) continue;
+      paths.push({
+        params: { slug },
+        props: { sectionKey: key, isFooterPage: true },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { sectionKey, isFooterPage } = Astro.props;
+const locale = Astro.locals.locale as Locale;
+
+// Determine title
+let title: string;
+if (isFooterPage) {
+  title = footerPageTitles[locale]?.[sectionKey] || sectionKey;
+} else {
+  const pageKey = sectionKey.replace("nav.", "page.");
+  title = t(locale, pageKey);
+}
+
+const isEnglishAi = locale === "en" && sectionKey === "nav.ai";
+
+// Map section keys to content file names
+const contentFileMap: Record<string, string> = {
+  "nav.cia": "cia.md",
+  "nav.china": "china.md",
+  "nav.legal": "legal.md",
+  "nav.ai": "ai.md",
+  "footer.about": "about.md",
+  "footer.cases": "cases.md",
+  "footer.contact": "contact.md",
+  "footer.copyright": "copyright.md",
+  "footer.privacy": "privacy.md",
+  "footer.other": "other-websites.md",
+  "footer.laws": "laws.md",
+  "footer.evidence": "evidence.md",
+};
+
+// Load markdown content if available
+let htmlContent = "";
+const contentFile = contentFileMap[sectionKey];
+if (contentFile) {
+  const localeDir = locale === "zh-cn" ? "zh-cn" : locale;
+  const contentPath = path.join(process.cwd(), "..", "..", "content", "pages", localeDir, contentFile);
+  try {
+    const md = fs.readFileSync(contentPath, "utf-8").trim();
+    if (md) {
+      htmlContent = await marked(md);
+    }
+  } catch {
+    // No content file found — page will just show title
+  }
+}
+---
+<Base locale={locale}>
+  <div class="page-container">
+    <h1>{title}</h1>
+    {isEnglishAi && <AiAnalysisContent />}
+    {htmlContent && <div class="page-content" set:html={htmlContent} />}
+  </div>
+</Base>
+
+<style>
+  .page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .page-container h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .page-content :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .page-content :global(ul),
+  .page-content :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .page-content :global(li) {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .page-content :global(hr) {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid var(--color-nav-border);
+  }
+
+  .page-content :global(strong) {
+    font-weight: 700;
+  }
+
+  .page-content :global(a) {
+    word-break: break-all;
+  }
+
+  .page-content :global(h2) {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-content :global(h3) {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+</style>

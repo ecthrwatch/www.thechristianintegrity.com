@@ -1,0 +1,145 @@
+---
+/**
+ * Shared timeline event detail component.
+ * Renders a single event: title, metadata bar, featured image, content, tags.
+ * Used by all sites' timeline detail pages.
+ */
+import type { Locale } from "../i18n/translations";
+import { formatDate, estimateReadingTime } from "../utils/timeline";
+
+interface Props {
+  event: any;
+  locale: Locale;
+  Content: any;
+}
+
+const { event, locale, Content } = Astro.props;
+
+const dateStr = formatDate(event.data.date);
+const readMin = estimateReadingTime(event.data.description || "");
+const featImg = event.data.featuredImage;
+const imgSrc = featImg ? `/images/featured/${featImg.replace(/^images\//, "")}` : null;
+const tags = event.data.tags || [];
+---
+<article class="event-page">
+  <h1>{event.data.title}</h1>
+
+  <!-- Metadata bar -->
+  <div class="event-meta">
+    <span class="meta-item">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      {dateStr}
+    </span>
+    <span class="meta-item">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      {readMin} min read
+    </span>
+  </div>
+
+  <!-- Featured image -->
+  {imgSrc && (
+    <div class="event-featured-image">
+      <img src={imgSrc} alt="Featured Image" loading="eager" />
+    </div>
+  )}
+
+  <!-- Body content -->
+  <div class="event-content prose">
+    <Content />
+  </div>
+
+  <!-- Tags -->
+  {tags.length > 0 && (
+    <div class="event-tags">
+      {tags.map((tag: string) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+  )}
+</article>
+
+<style>
+  .event-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .event-page h1 {
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+
+  [data-theme="dark"] .event-meta {
+    color: #9ca3af;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .event-featured-image {
+    margin-bottom: 1.5rem;
+  }
+
+  .event-featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .event-content {
+    line-height: 1.7;
+  }
+
+  .event-content :global(p) { margin-bottom: 1rem; }
+  .event-content :global(h1) { font-size: 1.75rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+  .event-content :global(h2) { font-size: 1.4rem; font-weight: 700; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+  .event-content :global(h3) { font-size: 1.2rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+  .event-content :global(blockquote) { border-left: 3px solid var(--color-nav-border); padding-left: 1rem; margin: 1rem 0; color: var(--color-text); opacity: 0.85; }
+  .event-content :global(hr) { border: none; border-top: 1px solid var(--color-nav-border); margin: 2rem 0; }
+  .event-content :global(figure) { margin: 1.5rem 0; }
+  .event-content :global(a) { word-break: break-all; }
+  .event-content :global(ul), .event-content :global(ol) { margin-bottom: 1rem; padding-left: 1.5rem; }
+  .event-content :global(li) { margin-bottom: 0.4rem; line-height: 1.6; }
+  .event-content :global(strong) { font-weight: 700; }
+  .event-content :global(img) { max-width: 100%; height: auto; display: block; margin: 1rem 0; border-radius: 4px; }
+
+  .event-tags {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-nav-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-nav-border);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    opacity: 0.8;
+  }
+
+  [data-theme="dark"] .tag {
+    background: #1e293b;
+  }
+</style>

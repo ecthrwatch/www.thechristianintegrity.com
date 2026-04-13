@@ -1,0 +1,14 @@
+---
+import { getPerson, renderInlineMarkdown } from "../data/loader";
+import type { Locale } from "../i18n/translations";
+
+interface Props {
+  entry: string;
+}
+
+const { entry } = Astro.props;
+const locale = Astro.locals.locale as Locale;
+const value = getPerson(locale, entry);
+const html = renderInlineMarkdown(value);
+---
+<span set:html={html} />

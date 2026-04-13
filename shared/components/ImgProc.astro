@@ -1,0 +1,11 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+}
+
+const { src, alt = "" } = Astro.props;
+---
+<figure style="padding: 0; margin: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  <img style="max-width: 100%; margin: 0; width: auto; height: auto;" src={src} alt={alt} loading="lazy" />
+</figure>

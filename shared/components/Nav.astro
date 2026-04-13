@@ -1,0 +1,96 @@
+---
+import { t } from "../i18n/utils";
+import type { Locale } from "../i18n/translations";
+import { languages, siteUrls, devPorts, navKeys, navSlugs } from "../i18n/translations";
+import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const siteName = Astro.locals.siteName ?? "Site";
+
+const isDev = import.meta.env.DEV;
+
+function langUrl(target: Locale): string {
+  if (isDev) {
+    return `http://localhost:${devPorts[target]}/`;
+  }
+  return siteUrls[target] + "/";
+}
+---
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">{siteName}</a>
+
+    <button
+      class="nav-hamburger"
+      type="button"
+      aria-expanded="false"
+      aria-label="Menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links">
+      {navKeys.map((key) => (
+        <li><a href={`/${navSlugs[locale][key]}/`}>{t(locale, key)}</a></li>
+      ))}
+    </ul>
+
+    <div class="nav-controls">
+      <ThemeToggle locale={locale} />
+
+      <div class="lang-switcher">
+        <button type="button" class="lang-switcher-btn" aria-expanded="false">
+          {languages[locale]}
+        </button>
+        <div class="lang-dropdown">
+          {(Object.keys(languages) as Locale[]).map((lang) => (
+            <a
+              href={langUrl(lang)}
+              class:list={[{ current: lang === locale }]}
+            >
+              {languages[lang]}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+(function () {
+  // Hamburger toggle
+  var hamburger = document.querySelector(".nav-hamburger");
+  var navLinks = document.querySelector(".nav-links");
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", function () {
+      var expanded = hamburger.getAttribute("aria-expanded") === "true";
+      hamburger.setAttribute("aria-expanded", String(!expanded));
+      navLinks.classList.toggle("open");
+    });
+  }
+
+  // Language switcher dropdown
+  var langBtn = document.querySelector(".lang-switcher-btn");
+  var langDropdown = document.querySelector(".lang-dropdown");
+  if (langBtn && langDropdown) {
+    langBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var expanded = langBtn.getAttribute("aria-expanded") === "true";
+      langBtn.setAttribute("aria-expanded", String(!expanded));
+      langDropdown.classList.toggle("open");
+    });
+
+    document.addEventListener("click", function () {
+      langBtn.setAttribute("aria-expanded", "false");
+      langDropdown.classList.remove("open");
+    });
+  }
+})();
+</script>
