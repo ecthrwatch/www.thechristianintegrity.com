@@ -1,0 +1,137 @@
+
+{{< dict email from >}} : {{< mydict2 person le_corre_vincent >}}<br>
+{{< dict email to >}} : {{< mydict2 person meheut_constant >}}
+
+EXTRAIT DES EXPLICATIONS ENVOYÉES LE 25 MAI 2022 ENTRE APPROXIMATIVEMENT 19:36 ET 20:05 (HEURE DE PÉKIN) À CONSTANT MÉHEUT PAR MESSAGERIE DIRECTE VIA TWITTER
+
+\[…\]
+
+Il y a également d’autres documents qui prouvent que le Monopoly a un effet considérable sur les ventes. Dans un secteur aussi compétitif que la restauration, si l’on prouve que le jeu était une escroquerie (et pas l’escroquerie mentionnée dans cet article ⬆️) mais une autre, selon moi, McDonald’s peut couler. Tout simplement.
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:36）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1936_0800_1}
+
+Je commence \[avec\] un exemple d’escroquerie que vous devriez comprendre relativement facilement vu votre intelligence:
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:36）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1936_0800_2}
+
+{{< imgproc2 002.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:36）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1936_0800_3}
+
+
+McDonald’s en France en 2011, prétendait que les consommateurs avaient 1 chance sur 4 de gagner tout de suite ⬆️
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:38）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1938_0800_1}
+
+{{< imgproc2 003.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:38）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1938_0800_2}
+
+Mais en petits caractères difficilement lisibles, surtout lorsqu’il y a des boissons excellentes pour la santé comme du Coca-Cola et que l’on ne peut pas mettre son gobelet horizontalement pour lire ce qu’ils ont écrit verticalement, il est écrit que la base du calcul est une « double carte gagnante »
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:41）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1941_0800_1}
+
+Sauf qu’il y a un problème: si la base du calcul est gagnante, vous avez forcément gagné! C’est sûr à 100%
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:41）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1941_0800_2}
+
+C’est logique. Mais pour mieux comprendre, ignorons un instant l’affirmation 1 chance sur 4. Concentrons nous sur la base du calcul: une double vignette gagnante.
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:47）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1947_0800_1}
+
+C’est quoi une double vignette gagnante exactement?
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:47）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1947_0800_2}
+
+Prenez un bout de papier 📄
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:56）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1956_0800_1}
+
+{{< imgproc2 004.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:56）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1956_0800_2}
+
+Puis dessinez 2 vignettes:
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:56）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1956_0800_3}
+
+{{< imgproc2 005.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 19:56）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_1956_0800_4}
+
+Puis vous écrivez dans l’une des deux vignettes « vignette gagnante » (moi j’avais écrit “winning sticker” car je faisais la démonstration a des amis américains \[…\]):
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:00）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2000_0800_1}
+
+{{< imgproc2 006.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:00）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2000_0800_2}
+
+Puis vous prenez une paire de ciseaux ✂️
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:00）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2000_0800_3}
+
+{{< imgproc2 007.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:00）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2000_0800_4}
+
+Et vous découpez les 2 vignettes.
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:02）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2002_0800_1}
+
+Et vous mettez les deux vignettes dans l’une de vos mains:
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:02）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2002_0800_2}
+
+{{< imgproc2 008.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:02）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2002_0800_3}
+
+Imaginez que c’est votre main ⬆️, posez-vous la question suivante: quelle est la probabilité de gagner?
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:03）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2003_0800_1}
+
+Ignorez l’affirmation initiale de McDonald’s. Pensez seulement à cette photo ⬇️
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:05）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2005_0800_1}
+
+{{< imgproc2 009.jpeg Fit "900x900 webp q90" "" />}}
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:05）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2005_0800_2}
+
+Quelle est la probabilité de gagner Monsieur Méheut?
+<!-- <br><span class="small right">（Message envoyé le 2022-05-25 à 20:05）</span> -->
+{#constant_meheut_twitter_dm_2022_05_25_2005_0800_3}
+
+LA RÉPONSE DE CONSTANT MÉHEUT REÇUE LE 27 MAI 2022 à 00:10 (HEURE DE PÉKIN) PAR MESSAGERIE DIRECTE VIA TWITTER :
+
+Bonjour M. \[Nom de la victime\]
+<!-- <br><span class="small right">（Message reçu le 2022-05-27 à 00:10）</span> -->
+{#constant_meheut_twitter_dm_2022_05_27_0010_0800_1}
+
+je m’excuse de ma réponse tardive, je suis assez pris en ce moment. J’ai rapidement regardé ce que vous m’avez envoyé et c’est très interessant. Donnez moi le temps d’y revenir demain et je vous recontacte.
+<!-- <br><span class="small right">（Message reçu le 2022-05-27 à 00:10）</span> -->
+{#constant_meheut_twitter_dm_2022_05_27_0010_0800_2}
+
+Il me répondra de nouveau [par email le 31 mai 2022 dans lequel il affirme avoir bien compris la fraude “une chance sur quatre”](https://fr.ecthrwatch.org/chronologies/constant-meheut-journaliste-au-new-york-times-comprends-la-fraude-une-chance-sur-quatre/):
+
+https://fr.ecthrwatch.org/chronologies/constant-meheut-journaliste-au-new-york-times-comprend-la-fraude-une-chance-sur-quatre/
+
+NOTE SPÉCIALE TEMPORAIRE POUR LES LECTEURS : J’ai besoin d’écrire plus d’explications. Mais pour l’instant, pour bien comprendre pourquoi McDonald’s a commis une fraude, vous devez savoir que McDonald’s a menti sur l’affirmation "1 chance sur 4 de gagner instantanément".
+{.textred .fontbold}
+
+Quelle était la probabilité réelle ? Était-ce ce qui était écrit en petits caractères ? Ce qui est écrit en minuscules signifie que les consommateurs avaient 1 chance sur 2.
+{.textred .fontbold}
+
+Mais McDonald's a aussi menti sur le "1 chance sur 2", les consommateurs n’avaient pas "1 chance sur 2".
+{.textred .fontbold}
+
+Ce n'était ni "1 chance sur 4" ni "1 chance sur 2".
+{.textred .fontbold}
+
+C’était combien alors ? En moyenne, seulement 1 vignette sur 8 était une vignette instantanément gagnante. Il y a donc une déviation quadruple par rapport à l'affirmation initiale de McDonald’s et cela constitue donc une escroquerie aggravée.
+{.textred .fontbold}
+
+Je donnerai plus d'explications très bientôt, <em>mais c'est l'une des plus grandes fraudes de l'histoire ! C'est la fraude du siècle !</em>
+{.textred .fontbold}
+

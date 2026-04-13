@@ -1,0 +1,23 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import TimelineDetail from "@shared/components/TimelineDetail.astro";
+import { getCollection, render } from "astro:content";
+import type { Locale } from "@shared/i18n/translations";
+
+export async function getStaticPaths() {
+  const events = await getCollection("timeline");
+  return events
+    .filter((e) => !e.data.draft)
+    .map((event) => ({
+      params: { slug: event.data.slug },
+      props: { event },
+    }));
+}
+
+const { event } = Astro.props;
+const locale = Astro.locals.locale as Locale;
+const { Content } = await render(event);
+---
+<Base locale={locale}>
+  <TimelineDetail event={event} locale={locale} Content={Content} />
+</Base>

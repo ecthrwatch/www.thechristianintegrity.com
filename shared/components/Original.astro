@@ -1,0 +1,17 @@
+---
+import { getOriginalText, renderInlineMarkdown } from "../data/loader";
+import type { Locale } from "../i18n/translations";
+
+interface Props {
+  lang: string;
+  type: string;
+  file: string;
+}
+
+const { type, file } = Astro.props;
+const locale = Astro.locals.locale as Locale;
+const prefix = getOriginalText(locale, type);
+const linkMd = `${prefix}[${file}](${file})`;
+const html = renderInlineMarkdown(linkMd);
+---
+<p set:html={html} />

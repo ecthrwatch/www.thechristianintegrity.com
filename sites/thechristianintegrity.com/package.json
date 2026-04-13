@@ -1,0 +1,26 @@
+{
+  "name": "thechristianintegrity.com",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n en,fr,zh -c blue,magenta,green \"npm run dev:en\" \"npm run dev:fr\" \"npm run dev:zh\"",
+    "dev:en": "astro dev --port 4321",
+    "dev:fr": "astro dev --port 4322",
+    "dev:zh": "astro dev --port 4323",
+    "build": "astro build",
+    "build:en": "LOCALE=en astro build",
+    "build:fr": "LOCALE=fr astro build",
+    "build:zh": "LOCALE=zh-cn astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.3",
+    "astro": "^6.1.4",
+    "js-yaml": "^4.1.1",
+    "marked": "^18.0.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
