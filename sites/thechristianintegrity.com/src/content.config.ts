@@ -24,4 +24,15 @@ const timeline = defineCollection({
   }),
 });
 
-export const collections = { timeline };
+const cases = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "../../content/cases/en" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().default(""),
+    date: z.coerce.date(),
+    slug: z.string(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
+export const collections = { timeline, cases };

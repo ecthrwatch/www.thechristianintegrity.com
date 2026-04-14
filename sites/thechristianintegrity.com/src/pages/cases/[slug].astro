@@ -1,0 +1,33 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+import type { Locale } from "@shared/i18n/translations";
+
+export async function getStaticPaths() {
+  const cases = await getCollection("cases");
+  return cases.map((c) => ({
+    params: { slug: c.data.slug },
+    props: { caseEntry: c },
+  }));
+}
+
+const { caseEntry } = Astro.props;
+const locale = Astro.locals.locale as Locale;
+const { Content } = await render(caseEntry);
+---
+<Base locale={locale}>
+  <article class="page-container">
+    <h1>{caseEntry.data.title}</h1>
+    <div class="case-content">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+  .page-container h1 { margin-bottom: 1.5rem; font-size: 1.8rem; line-height: 1.3; }
+  .case-content { line-height: 1.7; }
+  .case-content :global(p) { margin-bottom: 1rem; }
+  .case-content :global(a) { word-break: break-all; }
+</style>
