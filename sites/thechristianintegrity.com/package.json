@@ -3,9 +3,9 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n en,fr,zh -c blue,magenta,green \"npm run dev:en\" \"npm run dev:fr\" \"npm run dev:zh\"",
-    "dev:en": "astro dev --port 4321",
-    "dev:fr": "astro dev --port 4322",
-    "dev:zh": "astro dev --port 4323",
+    "dev:en": "astro dev --port 4331",
+    "dev:fr": "astro dev --port 4332",
+    "dev:zh": "astro dev --port 4333",
     "build": "astro build",
     "build:en": "LOCALE=en astro build",
     "build:fr": "LOCALE=fr astro build",
