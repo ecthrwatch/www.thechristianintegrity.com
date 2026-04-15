@@ -2,6 +2,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* KaTeX math CSS (self-hosted via node_modules, no CDN) */
+@import "katex/dist/katex.min.css";
+
 @source "../../../../shared/**/*.{astro,ts,tsx,js,jsx,md,mdx}";
 @source "../**/*.{astro,ts,tsx,js,jsx,md,mdx}";
 
