@@ -18,16 +18,14 @@ const { Content } = await render(caseEntry);
 <Base locale={locale}>
   <article class="page-container">
     <h1>{caseEntry.data.title}</h1>
-    <div class="case-content">
+    <div class="case-content prose">
       <Content />
     </div>
   </article>
 </Base>
 
 <style>
-  .page-container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+  .page-container { max-width: 73rem; margin: 0 auto; padding: 2rem 1rem; }
   .page-container h1 { margin-bottom: 1.5rem; font-size: 1.8rem; line-height: 1.3; }
   .case-content { line-height: 1.7; }
-  .case-content :global(p) { margin-bottom: 1rem; }
-  .case-content :global(a) { word-break: break-all; }
 </style>

@@ -263,12 +263,6 @@ main {
   font-weight: 700;
 }
 
-/* ── Page Content ── */
-.page-content p {
-  margin-bottom: 1rem;
-  line-height: 1.7;
-}
-
 /* ── Footer ── */
 .footer {
   background-color: var(--color-footer-bg);
