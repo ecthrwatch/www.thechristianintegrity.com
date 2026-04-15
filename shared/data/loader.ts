@@ -8,14 +8,14 @@ import type { Locale } from "../i18n/translations";
 const dataDir = path.join(process.cwd(), "..", "..", "shared", "data");
 
 /**
- * Maps our locale codes to the directory names used in the Hugo data files.
- * Hugo used "zh" while we use "zh-cn".
+ * Maps our locale codes to the directory names.
+ * Consistent with the locale codes throughout the codebase.
  */
 const localeToDir: Record<Locale, string> = {
   en: "en",
   fr: "fr",
   it: "it",
-  "zh-cn": "zh",
+  "zh-cn": "zh-cn",
 };
 
 function loadYaml(filePath: string): Record<string, any> {

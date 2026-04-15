@@ -107,7 +107,7 @@ const contact = contactText[locale] || contactText.en;
 
       <!-- Executive Summary -->
       {execSummaryHtml && (
-        <div class="exec-summary" set:html={execSummaryHtml} />
+        <div class="exec-summary prose" set:html={execSummaryHtml} />
       )}
 
       <!-- Portrait + contact -->
@@ -135,7 +135,7 @@ const contact = contactText[locale] || contactText.en;
 
 <style>
   .home-container {
-    max-width: 900px;
+    max-width: 73rem;
     margin: 0 auto;
     padding: 2rem 1.5rem;
   }
@@ -216,19 +216,6 @@ const contact = contactText[locale] || contactText.en;
   /* Executive Summary */
   .exec-summary {
     margin-top: 1rem;
-  }
-
-  .exec-summary :global(p) {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  .exec-summary :global(strong) {
-    font-weight: 700;
-  }
-
-  .exec-summary :global(em) {
-    font-style: italic;
   }
 
   /* Portrait */

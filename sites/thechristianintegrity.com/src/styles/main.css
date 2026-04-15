@@ -1,0 +1,42 @@
+/* ── Tailwind v4 + Typography plugin (per-site entry) ── */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source "../../../../shared/**/*.{astro,ts,tsx,js,jsx,md,mdx}";
+@source "../**/*.{astro,ts,tsx,js,jsx,md,mdx}";
+
+@custom-variant dark ([data-theme="dark"] &);
+
+@theme {
+  --font-sans: "Lora", "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --font-serif: "Lora", "Noto Serif SC", Georgia, "Times New Roman", serif;
+}
+
+/* ── Inherit shared theme variables, nav, footer, etc. ── */
+@import "../../../../shared/styles/global.css";
+
+/* ── Prose overrides (must come AFTER @plugin so we win the cascade) ── */
+@layer utilities {
+  .prose {
+    max-width: 73rem !important;        /* ~1168px to match Hugo */
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+  .prose h1 { font-size: 2.25rem !important; font-weight: 800 !important; line-height: 1.25; margin-top: 0; margin-bottom: 1rem; color: var(--color-text); }
+  .prose h2 { font-size: 1.5rem  !important; font-weight: 700 !important; margin-top: 2rem; margin-bottom: 1rem; color: var(--color-text); }
+  .prose h3 { font-size: 1.25rem !important; font-weight: 700 !important; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--color-text); }
+  .prose p { margin-bottom: 1rem; }
+  .prose a { color: var(--color-link) !important; word-break: break-all; text-decoration: none !important; font-weight: inherit !important; }
+  .prose a:hover { color: var(--color-link-hover) !important; text-decoration: underline !important; }
+  .prose strong { color: var(--color-text); font-weight: 700; }
+  .prose em { font-style: italic; }
+  .prose blockquote { border-left: 3px solid var(--color-nav-border); padding-left: 1rem; margin: 1rem 0; opacity: 0.85; font-style: normal !important; font-weight: normal !important; }
+  .prose blockquote p:first-of-type::before,
+  .prose blockquote p:last-of-type::after { content: none !important; }
+  .prose hr { border: none; border-top: 1px solid var(--color-nav-border); margin: 2rem 0; }
+  .prose img { border-radius: 4px; margin: 1rem 0; max-width: 100%; height: auto; display: block; }
+  .prose ul, .prose ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+  .prose li { margin-bottom: 0.4rem; line-height: 1.6; }
+  .prose figure { margin: 1.5rem 0; }
+}
