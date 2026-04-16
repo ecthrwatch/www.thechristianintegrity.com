@@ -6,6 +6,7 @@
  */
 import type { Locale } from "../i18n/translations";
 import { formatDate, estimateReadingTime } from "../utils/timeline";
+import { slugifyTag } from "../utils/tags";
 
 interface Props {
   event: any;
@@ -52,7 +53,7 @@ const tags = event.data.tags || [];
   {tags.length > 0 && (
     <div class="event-tags">
       {tags.map((tag: string) => (
-        <span class="tag">{tag}</span>
+        <a href={`/tags/${slugifyTag(tag)}/`} class="tag">{tag}</a>
       ))}
     </div>
   )}
@@ -123,7 +124,14 @@ const tags = event.data.tags || [];
     border-radius: 9999px;
     font-size: 0.8rem;
     color: var(--color-text);
+    text-decoration: none;
     opacity: 0.8;
+    transition: background-color 0.15s;
+  }
+
+  .tag:hover {
+    background: var(--color-nav-border);
+    text-decoration: none;
   }
 
   [data-theme="dark"] .tag {
