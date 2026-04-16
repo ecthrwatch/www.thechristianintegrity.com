@@ -1,10 +1,11 @@
 /* ── Reset ── */
+/* Note: margin/padding reset removed — Tailwind's preflight handles this.
+   The universal * { padding: 0 } was overriding Tailwind's @layer utilities
+   (unlayered styles beat layered styles), breaking prose list padding. */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 /* ── Theme Variables ── */
