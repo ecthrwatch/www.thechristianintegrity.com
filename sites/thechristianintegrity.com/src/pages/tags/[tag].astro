@@ -1,0 +1,186 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import { getCollection } from "astro:content";
+import { filterTimelineEvents, formatDate, estimateReadingTime } from "@shared/utils/timeline";
+import { collectTags, filterEventsByTag, slugifyTag } from "@shared/utils/tags";
+import { navSlugs } from "@shared/i18n/translations";
+import type { Locale } from "@shared/i18n/translations";
+
+export async function getStaticPaths() {
+  const allEvents = await getCollection("timeline");
+  const publishedEvents = allEvents.filter((e) => !e.data.draft);
+
+  // Collect all unique tag slugs
+  const tagSlugs = new Set<string>();
+  for (const event of publishedEvents) {
+    for (const tag of event.data.tags || []) {
+      tagSlugs.add(slugifyTag(tag));
+    }
+  }
+
+  return Array.from(tagSlugs).map((slug) => ({
+    params: { tag: slug },
+  }));
+}
+
+const { tag: tagSlug } = Astro.params;
+const locale = Astro.locals.locale as Locale;
+const siteDomain = Astro.locals.siteDomain;
+const timelineShowAll = Astro.locals.timelineShowAll;
+
+const allEvents = await getCollection("timeline");
+const siteEvents = filterTimelineEvents(allEvents, siteDomain, timelineShowAll);
+const tagEvents = filterEventsByTag(siteEvents, tagSlug!)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Find the display name from the first matching event
+let tagDisplayName = tagSlug;
+for (const event of tagEvents) {
+  const match = (event.data.tags || []).find((t: string) => slugifyTag(t) === tagSlug);
+  if (match) {
+    tagDisplayName = match;
+    break;
+  }
+}
+
+const timelineSlug = navSlugs[locale]?.["nav.timeline"] || "timeline-of-events-and-open-letters";
+---
+<Base locale={locale}>
+  <div class="page-container">
+    <h1>Tag: {tagDisplayName}</h1>
+    <p class="tag-count">{tagEvents.length} {tagEvents.length === 1 ? "entry" : "entries"}</p>
+
+    <div class="tag-entries">
+      {tagEvents.map((event) => {
+        const slug = event.data.slug;
+        const href = `/${timelineSlug}/${slug}/`;
+        const readMin = estimateReadingTime(event.data.description || "");
+        const featImg = event.data.featuredImage;
+        const imgSrc = featImg ? `/images/featured/${featImg.replace(/^images\//, "")}` : null;
+        return (
+          <div class="entry-card">
+            <div class="card-inner" data-has-image={imgSrc ? "true" : undefined}>
+              <div class="card-text">
+                <a href={href} class="card-title-link">
+                  <h3>{event.data.title}</h3>
+                </a>
+                {event.data.description && (
+                  <p class="card-desc">{event.data.description}</p>
+                )}
+                <p class="card-read-more"><a href={href}>Click here to read more.</a></p>
+                <div class="card-meta">
+                  <span>{formatDate(event.data.date)}</span>
+                  <span>{readMin} min read</span>
+                </div>
+              </div>
+              {imgSrc && (
+                <div class="card-image">
+                  <a href={href}><img src={imgSrc} alt="Featured" loading="lazy" /></a>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page-container {
+    max-width: 73rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .page-container h1 {
+    margin-bottom: 0.25rem;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.1111;
+  }
+
+  .tag-count {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  .tag-entries {
+    border-top: 1px solid var(--color-nav-border);
+  }
+
+  .entry-card {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-nav-border);
+  }
+
+  .card-inner {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .card-inner[data-has-image] {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .card-text {
+    flex: 1;
+  }
+
+  .card-title-link {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .card-title-link:hover {
+    color: var(--color-link-hover);
+    text-decoration: none;
+  }
+
+  .card-title-link h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .card-desc {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.75;
+  }
+
+  .card-read-more {
+    margin: 0 0 0.75rem 0;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.875rem;
+    opacity: 0.6;
+  }
+
+  .card-image {
+    flex-shrink: 0;
+    width: 33.333%;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .card-inner[data-has-image] {
+      flex-direction: column-reverse;
+    }
+    .card-image {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+</style>
