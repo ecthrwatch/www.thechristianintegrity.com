@@ -106,7 +106,9 @@ h1, h2, h3 {
 
 main {
   flex: 1;
-  background-color: var(--color-content-bg);
+  /* No background — content sits directly on page bg (primary-bg).
+     Hugo only uses secondary-bg on nav and specific widget cards,
+     NOT on the main content area. */
 }
 
 /* ── Nav ── */
