@@ -1,4 +1,10 @@
-/* ── Tailwind v4 + Typography plugin (per-site entry) ── */
+/* ══════════════════════════════════════════════════════
+   Tailwind v4 + Typography plugin (per-site entry)
+   Prose overrides match Hugo Eureka theme EXACTLY.
+   Source: eureka/assets/css/{base,prose,site}.css
+          + eureka/assets/css/tailwind.config.js
+          + site inline <style> (link colors)
+   ══════════════════════════════════════════════════════ */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -18,46 +24,72 @@
 /* ── Inherit shared theme variables, nav, footer, etc. ── */
 @import "../../../../shared/styles/global.css";
 
-/* ── Prose overrides — matching Hugo eureka theme exactly ── */
+/* ══════════════════════════════════════════════════════
+   Prose overrides — Hugo Eureka typography mapping
+
+   From tailwind.config.js:
+     prose-body = secondary-text (0.7)
+     prose-headings = primary-text (0.85)
+     prose-links = primary-text (0.85)
+     prose-bold = primary-text (0.85)
+     prose-counters = tertiary-text (0.55)
+     prose-bullets = tertiary-text (0.55)
+     prose-hr = tertiary-bg
+     prose-quotes = tertiary-text (0.55)
+     prose-quote-borders = tertiary-bg
+
+   From prose.css:
+     .prose { max-w-full break-words }
+
+   From base.css:
+     a:hover { color: var(--color-eureka) = #38b2ac }
+     BUT site inline overrides: a:hover { color: #EE0000 }
+   ══════════════════════════════════════════════════════ */
 @layer utilities {
   .prose {
-    max-width: 73rem !important;
+    max-width: 73rem !important;       /* Hugo: full-width content area */
     font-size: 1rem;
-    line-height: 1.75 !important;     /* Hugo: 1.75 in prose */
-    color: var(--color-text);
+    line-height: 1.75 !important;      /* Hugo prose: 1.75 */
+    color: var(--color-text);          /* secondary-text: rgba(0,0,0,0.7) */
+    overflow-wrap: break-word;
   }
 
-  /* Headings — Hugo exact values */
-  .prose h1 { font-size: 2.25em !important; font-weight: 800 !important; line-height: 1.1111 !important; margin-top: 0; margin-bottom: 0.8889em !important; color: var(--color-text); }
-  .prose h2 { font-size: 1.5em !important; font-weight: 700 !important; line-height: 1.3333 !important; margin-top: 2em !important; margin-bottom: 1em !important; color: var(--color-text); }
-  .prose h3 { font-size: 1.25em !important; font-weight: 600 !important; line-height: 1.6 !important; margin-top: 1.6em !important; margin-bottom: 0.6em !important; color: var(--color-text); }
+  /* Headings — primary-text (0.85 opacity, darker than body) */
+  .prose h1 { font-size: 2.25em !important; font-weight: 800 !important; line-height: 1.1111 !important; margin-top: 0; margin-bottom: 0.8889em !important; color: var(--color-heading) !important; }
+  .prose h2 { font-size: 1.5em !important; font-weight: 700 !important; line-height: 1.3333 !important; margin-top: 2em !important; margin-bottom: 1em !important; color: var(--color-heading) !important; }
+  .prose h3 { font-size: 1.25em !important; font-weight: 600 !important; line-height: 1.6 !important; margin-top: 1.6em !important; margin-bottom: 0.6em !important; color: var(--color-heading) !important; }
 
-  /* Paragraphs — Hugo: 1.25em top + bottom */
+  /* Paragraphs — 1.25em top + bottom */
   .prose p { margin-top: 1.25em !important; margin-bottom: 1.25em !important; }
 
-  /* Links — Hugo: underlined, blue, red on hover */
-  .prose a { color: var(--color-link) !important; text-decoration: underline !important; font-weight: 500 !important; word-break: break-all; transition: color 0.3s; }
-  .prose a:hover { color: var(--color-link-hover) !important; }
+  /* Links — Hugo site custom: blue, no underline, red on hover with underline */
+  .prose a { color: var(--color-link) !important; text-decoration: none !important; font-weight: 500 !important; word-break: break-all; transition: color 0.3s ease-in-out; }
+  .prose a:visited { color: var(--color-link-visited) !important; }
+  .prose a:hover { color: var(--color-link-hover) !important; text-decoration: underline !important; }
 
-  /* Strong — Hugo: weight 600 */
-  .prose strong { color: var(--color-text); font-weight: 600 !important; }
+  /* Strong/Bold — primary-text (darker), weight 600 */
+  .prose strong { color: var(--color-heading) !important; font-weight: 600 !important; }
 
-  /* Blockquote — Hugo: italic, weight 500, left border 0.25rem */
-  .prose blockquote { border-inline-start-width: 0.25rem !important; border-inline-start-color: var(--color-nav-border) !important; padding-inline-start: 1em !important; margin-top: 1.6em !important; margin-bottom: 1.6em !important; font-style: italic !important; font-weight: 500 !important; }
+  /* Blockquote — Hugo: italic, weight 500, tertiary border + quote text */
+  .prose blockquote { border-inline-start-width: 0.25rem !important; border-inline-start-color: var(--color-tertiary-bg) !important; padding-inline-start: 1em !important; margin-top: 1.6em !important; margin-bottom: 1.6em !important; font-style: italic !important; font-weight: 500 !important; color: var(--color-meta) !important; }
   .prose blockquote p:first-of-type::before { content: open-quote; }
   .prose blockquote p:last-of-type::after { content: close-quote; }
 
-  /* HR — Hugo: 3em margin */
-  .prose hr { border: none; border-top: 1px solid var(--color-nav-border); margin-top: 3em !important; margin-bottom: 3em !important; }
+  /* HR — tertiary-bg border, 3em margin */
+  .prose hr { border: none; border-top: 1px solid var(--color-tertiary-bg); margin-top: 3em !important; margin-bottom: 3em !important; }
 
   /* Images */
   .prose img { border-radius: 4px; margin: 2em 0 !important; max-width: 100%; height: auto; display: block; }
 
-  /* Lists — Hugo: 2rem padding */
-  .prose ul, .prose ol { margin-top: 1.25em !important; margin-bottom: 1.25em !important; padding-inline-start: 2rem !important; }
+  /* Lists — Hugo prose default: 1.625em padding (not 2rem) */
+  .prose ul, .prose ol { margin-top: 1.25em !important; margin-bottom: 1.25em !important; padding-inline-start: 1.625em !important; }
   .prose ol { list-style-type: decimal !important; }
   .prose ul { list-style-type: disc !important; }
   .prose li { margin-top: 0.5em !important; margin-bottom: 0.5em !important; }
+
+  /* List markers — tertiary-text (muted) */
+  .prose ol > li::marker { color: var(--color-meta); }
+  .prose ul > li::marker { color: var(--color-meta); }
 
   /* Figure */
   .prose figure { margin: 2em 0 !important; }
