@@ -13,9 +13,9 @@
   --color-bg: #f2f2f7;              /* Hugo: rgba(242,242,247,1) — light gray page bg */
   --color-content-bg: #ffffff;      /* White content area on gray page */
   --color-text: rgba(0, 0, 0, 0.7); /* Hugo: semi-transparent black */
-  --color-nav-bg: #f8f8f8;
+  --color-nav-bg: #ffffff;            /* Hugo: secondary-bg (white, same as content) */
   --color-nav-border: #e0e0e0;
-  --color-footer-bg: #f8f8f8;
+  --color-footer-bg: transparent;    /* Hugo: footer inherits page gray bg */
   --color-link: #0000ee;            /* Hugo: standard blue links */
   --color-link-hover: #ee0000;      /* Hugo: red on hover */
   --color-toggle-bg: #e0e0e0;
@@ -33,9 +33,9 @@
   --color-bg: #000000;              /* Hugo: pure black */
   --color-content-bg: #1c1c1e;     /* Hugo: rgba(28,28,30,1) */
   --color-text: rgba(255, 255, 255, 0.7); /* Hugo: semi-transparent white */
-  --color-nav-bg: #1c1c1e;
+  --color-nav-bg: #1c1c1e;           /* Hugo: secondary-bg dark */
   --color-nav-border: #333333;
-  --color-footer-bg: #1c1c1e;
+  --color-footer-bg: transparent;    /* Hugo: footer inherits page black bg */
   --color-link: #1f90ef;            /* Hugo dark mode link */
   --color-link-hover: #e100e1;      /* Hugo dark mode hover */
   --color-toggle-bg: #333333;
