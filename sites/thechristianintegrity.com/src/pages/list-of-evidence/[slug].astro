@@ -1,0 +1,31 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+import type { Locale } from "@shared/i18n/translations";
+
+export async function getStaticPaths() {
+  const evidence = await getCollection("evidence");
+  return evidence.map((item) => ({
+    params: { slug: item.data.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const locale = Astro.locals.locale as Locale;
+const { Content } = await render(item);
+---
+<Base locale={locale}>
+  <article class="page-container">
+    <h1>{item.data.title}</h1>
+    <div class="evidence-content prose">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-container { max-width: 73rem; margin: 0 auto; padding: 2rem 1rem; }
+  .page-container h1 { margin-bottom: 0.8889em; font-size: 2.25rem; font-weight: 800; line-height: 1.1111; }
+  .evidence-content { line-height: 1.7; }
+</style>

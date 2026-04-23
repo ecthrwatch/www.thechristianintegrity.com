@@ -35,4 +35,24 @@ const cases = defineCollection({
   }),
 });
 
-export const collections = { timeline, cases };
+const laws = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "../../content/laws/en" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().default(""),
+    date: z.coerce.date(),
+    slug: z.string(),
+  }),
+});
+
+const evidence = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "../../content/evidence/en" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().default(""),
+    date: z.coerce.date(),
+    slug: z.string(),
+  }),
+});
+
+export const collections = { timeline, cases, laws, evidence };

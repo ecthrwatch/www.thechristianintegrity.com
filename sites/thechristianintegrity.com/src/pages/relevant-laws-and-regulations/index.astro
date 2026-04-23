@@ -1,0 +1,64 @@
+---
+import Base from "@shared/layouts/Base.astro";
+import { getCollection } from "astro:content";
+import type { Locale } from "@shared/i18n/translations";
+import { footerPageTitles } from "@shared/i18n/translations";
+import fs from "node:fs";
+import path from "node:path";
+import { marked } from "marked";
+
+const locale = Astro.locals.locale as Locale;
+
+// Load intro markdown (from content/pages/en/laws.md)
+let introHtml = "";
+const localeDir = locale === "zh-cn" ? "zh-cn" : locale;
+const introPath = path.join(process.cwd(), "..", "..", "content", "pages", localeDir, "laws.md");
+try {
+  const md = fs.readFileSync(introPath, "utf-8").trim();
+  if (md) introHtml = await marked(md);
+} catch { /* no intro */ }
+
+// Load all laws
+const allLaws = await getCollection("laws");
+const laws = allLaws.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const title = footerPageTitles[locale]?.["footer.laws"] || "Relevant Laws and Regulations";
+---
+<Base locale={locale}>
+  <div class="page-container">
+    <h1>{title}</h1>
+
+    {introHtml && <div class="intro-content prose" set:html={introHtml} />}
+
+    <div class="laws-list">
+      {laws.map((law) => {
+        const href = `/relevant-laws-and-regulations/${law.data.slug}/`;
+        return (
+          <div class="law-card">
+            <a href={href} class="law-title-link">
+              <h3>{law.data.title}</h3>
+            </a>
+            {law.data.description && (
+              <p class="law-desc">{law.data.description}</p>
+            )}
+            <p class="law-read-more"><a href={href}>Click here to read more.</a></p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page-container { max-width: 73rem; margin: 0 auto; padding: 2rem 1rem; }
+  .page-container h1 { margin-bottom: 0.8889em; font-size: 2.25rem; font-weight: 800; line-height: 1.1111; }
+  .intro-content { margin-bottom: 2rem; line-height: 1.7; }
+  .laws-list { border-top: 1px solid var(--color-nav-border); }
+  .law-card { padding: 1.5rem 0; border-bottom: 1px solid var(--color-nav-border); }
+  .law-title-link { text-decoration: none; color: var(--color-text); }
+  .law-title-link:hover { color: var(--color-link-hover); }
+  .law-title-link h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700; }
+  .law-desc { margin: 0 0 0.5rem 0; line-height: 1.7; }
+  .law-read-more { margin: 0; }
+  .law-read-more a { color: var(--color-link); }
+</style>
