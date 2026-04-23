@@ -24,7 +24,7 @@ const laws = allLaws.sort((a, b) => b.data.date.getTime() - a.data.date.getTime(
 
 const title = footerPageTitles[locale]?.["footer.laws"] || "Relevant Laws and Regulations";
 ---
-<Base locale={locale}>
+<Base locale={locale} title={title}>
   <div class="page-container">
     <h1>{title}</h1>
 

@@ -14,6 +14,7 @@ const timeline = defineCollection({
     tags: z.array(z.string()).optional(),
     timelines: z.array(z.string()).optional(),
     featuredImage: z.string().optional(),
+    featuredImageCaption: z.string().optional(),
     translationKey: z.string().optional(),
     CONF_websites: z.string().optional(),
     toc: z.boolean().optional(),

@@ -70,7 +70,7 @@ const contactText: Record<Locale, { linkedin: string; email: string }> = {
 };
 const contact = contactText[locale] || contactText.en;
 ---
-<Base locale={locale}>
+<Base locale={locale} description={about.bio ? about.bio.replace(/<[^>]+>/g, '').substring(0, 200) : undefined} image="/images/christian_cross.png">
   <div class="home-container">
     <!-- About Section -->
     <div class="about-section">

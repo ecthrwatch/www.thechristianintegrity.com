@@ -45,7 +45,7 @@ for (const event of tagEvents) {
 
 const timelineSlug = navSlugs[locale]?.["nav.timeline"] || "timeline-of-events-and-open-letters";
 ---
-<Base locale={locale}>
+<Base locale={locale} title={`Tag: ${tagDisplayName}`}>
   <div class="page-container">
     <h1>Tag: {tagDisplayName}</h1>
     <p class="tag-count">{tagEvents.length} {tagEvents.length === 1 ? "entry" : "entries"}</p>
