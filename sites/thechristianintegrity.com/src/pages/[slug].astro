@@ -22,9 +22,10 @@ export function getStaticPaths() {
     }
   }
 
-  // Footer-only pages
+  // Footer-only pages — skip laws and evidence (they have dedicated directories)
   for (const locale of Object.keys(footerPageSlugs) as Locale[]) {
     for (const key of footerPageKeys) {
+      if (key === "footer.laws" || key === "footer.evidence") continue;
       const slug = footerPageSlugs[locale][key];
       if (!slug) continue;
       paths.push({
