@@ -13,7 +13,7 @@ const allEvents = await getCollection("timeline");
 const events = filterTimelineEvents(allEvents, siteDomain, timelineShowAll);
 const tags = collectTags(events);
 ---
-<Base locale={locale}>
+<Base locale={locale} title="Tags">
   <div class="page-container">
     <h1>Tags</h1>
     <div class="tag-cloud">

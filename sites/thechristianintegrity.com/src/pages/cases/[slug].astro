@@ -15,7 +15,7 @@ const { caseEntry } = Astro.props;
 const locale = Astro.locals.locale as Locale;
 const { Content } = await render(caseEntry);
 ---
-<Base locale={locale}>
+<Base locale={locale} title={caseEntry.data.title} description={caseEntry.data.description} type="article">
   <article class="page-container">
     <h1>{caseEntry.data.title}</h1>
     <div class="case-content prose">

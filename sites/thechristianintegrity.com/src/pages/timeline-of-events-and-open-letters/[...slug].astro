@@ -17,7 +17,16 @@ export async function getStaticPaths() {
 const { event } = Astro.props;
 const locale = Astro.locals.locale as Locale;
 const { Content } = await render(event);
+
+const featImg = event.data.featuredImage;
+const metaImage = featImg ? `/images/featured/${featImg.replace(/^images\//, "")}` : undefined;
 ---
-<Base locale={locale}>
+<Base
+  locale={locale}
+  title={event.data.title}
+  description={event.data.description}
+  image={metaImage}
+  type="article"
+>
   <TimelineDetail event={event} locale={locale} Content={Content} />
 </Base>

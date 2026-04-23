@@ -15,7 +15,7 @@ const { law } = Astro.props;
 const locale = Astro.locals.locale as Locale;
 const { Content } = await render(law);
 ---
-<Base locale={locale}>
+<Base locale={locale} title={law.data.title} description={law.data.description} type="article">
   <article class="page-container">
     <h1>{law.data.title}</h1>
     <div class="law-content prose">

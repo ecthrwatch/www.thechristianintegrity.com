@@ -39,9 +39,12 @@ const tags = event.data.tags || [];
 
   <!-- Featured image -->
   {imgSrc && (
-    <div class="event-featured-image">
-      <img src={imgSrc} alt="Featured Image" loading="eager" />
-    </div>
+    <figure class="event-featured-image">
+      <img src={imgSrc} alt={event.data.featuredImageCaption || "Featured image"} loading="eager" />
+      {event.data.featuredImageCaption && (
+        <figcaption>{event.data.featuredImageCaption}</figcaption>
+      )}
+    </figure>
   )}
 
   <!-- Body content -->
@@ -93,7 +96,7 @@ const tags = event.data.tags || [];
   }
 
   .event-featured-image {
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem 0;
   }
 
   .event-featured-image img {
@@ -101,6 +104,14 @@ const tags = event.data.tags || [];
     height: auto;
     display: block;
     border-radius: 4px;
+  }
+
+  .event-featured-image figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--color-meta);
+    text-align: center;
   }
 
   .event-content {
