@@ -1,9 +1,0 @@
-{
-  "name": "astro-thechristianintegrity-monorepo",
-  "type": "module",
-  "private": true,
-  "dependencies": {
-    "js-yaml": "^4.1.1",
-    "marked": "^18.0.0"
-  }
-}
