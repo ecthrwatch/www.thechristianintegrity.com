@@ -1,7 +1,0 @@
-In 2023, I submitted additional requests to the European Court of Human Rights (ECtHR). You can read redacted versions of what I explained to the ECtHR on [December 15, 2023](https://www.ecthrwatch.org/timeline/ecthr-request-for-interim-measures-fax-submission-2023-12-15/), and on [December 20, 2023](https://www.ecthrwatch.org/timeline/ecthr-request-for-interim-measures-fax-submission-2023-12-20/). 
-
-In 2022, I submitted two requests to the European Court of Human Rights (ECtHR). Case V.L.C. v. France (50552/22). One of the requests was denied and the other request, request for anonymity, was approved.
-
-In 2018, I submitted 5 applications to the European Court of Human Rights (ECtHR). My reference numbers were REF-GFP-001, REF-MCD-002, REF-PST-003, REF-CRF-004, and REF-TOR-005. The application numbers assigned by the ECtHR were 29837/18, 29840/18, 29846/18, 29848/18, and 29855/18. However, the ECtHR wasn't very diligent and failed to write down in their reply my corresponding reference numbers to the application numbers they had assigned.
-
-Furthermore, I filed a new complaint with the Office of the Whistleblower of the United States Securities and Exchange Commission (SEC). I also notified the Federal Bureau of Investigation (FBI). *Some* of my communications to the FBI can be read on [Federal-Bureau-of-Investigation.com/open-letters](https://www.federal-bureau-of-investigation.com/open-letters/) (NON-OFFICIAL website on the FBI).
